@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>B站数据可视化与分析</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "favicon-16x16.png" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "s/css/page.css" %}" />
+    <link href="{% static "bootstrap-3.3.7-dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "s/plugins/css/iconfont.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+</head>
+<body id="c">
+<div class="page" id="app">
+	<div class="nav-left">
+		<div class="LogoName">
+			B站数据可视化与分析
+		</div>
+		<div class="navDiv">
+			<div class="nav-list">
+				<ul>
+					<li class="nav-tab a_active waves-effect">
+                        <a href="{% static 's/html/home.html' %}" class="li-a active" target="iframe"><i class='iconfont icon-shouye-zhihui'></i> 主页</a>
+					</li>
+					<li class="nav-tab nav-ul">
+						<a href="javascript:void[0]" class="li-a"><i class='iconfont icon-gerenzhongxin-zhihui'></i> 全区排行榜TOP100
+							<i class='iconfont icon-a-xiala2' style="float: right;"></i></a>
+						<div class="nav-box">
+							<a href="{% static 's/html/Top100平均播放量情况.html' %}" class="li-a-a" target="iframe">各分区平均播放量情况</a>
+							<a href="{% static 's/html/Top100平均三连的雷达图.html' %}" class="li-a-a" target="iframe">各分区平均三连情况</a>
+							<a href="{% static 's/html/Top100各分区平均情况.html' %}" class="li-a-a" target="iframe">各分区弹幕评论分享情况</a>
+
+						</div>
+					</li>
+					<li class="nav-tab nav-ul">
+						<a href="javascript:void[0]" class="li-a"><i class='iconfont icon-kandian-zhihui'></i> 各分区TOP100
+							<i class='iconfont icon-a-xiala2' style="float: right;"></i></a>
+						<div class="nav-box">
+							<a href="{% static 's/html/各分区播放量均值.html' %}" class="li-a-a" target="iframe">播放量情况</a>
+							<a href="{% static 's/html/各分区三连均值情况可视化.html' %}" class="li-a-a" target="iframe">三连情况</a>
+							<a href="{% static 's/html/各分区弹幕评论分享平均情况.html' %}" class="li-a-a" target="iframe">弹幕评论分享情况</a>
+						</div>
+					</li>
+                    <li class="nav-tab nav-ul">
+                        <a href="query/" class="li-a" target="iframe"><i class='iconfont icon-fenxiang'></i> 排行榜</a>
+					</li>
+                  <!--  <li class="nav-tab nav-ul">
+                        <a href="message/" class="li-a" target="iframe"><i class='iconfont icon-yanziwancheng'></i>个人信息</a>
+                    </li>-->
+					<li class="nav-tab nav-ul">
+                        <a href="error/" class="li-a" target="iframe"><i class='iconfont icon-bilibili'></i> 联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	<div class="nav-right">
+		<div class="nav-top">
+        <ul class="nav navbar-nav navbar-right">
+              {% if request.session.is_login %}
+               <li><a href="#" rel="external nofollow">当前在线：{{ request.session.user_name }}</a></li>
+               <li><a href="/logout/" rel="external nofollow" >登出</a></li>
+              {% endif %}
+        </ul>
+		</div>
+        <div class="content-page">
+			<iframe name="iframe" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="{% static "s/js/jquery.min.js"%}"></script>
+
+</script>
+<script type="text/javascript">
+	$(function() {
+		let navflag = false;
+		$('.nav-tab').click(function() {
+			$(this).siblings().each(function() {
+				$(this).removeClass('a_active');
+				// $(this).removeClass('a_active');
+				$(this).find('.nav-box').css('height', '0')
+				//关闭右侧箭头
+				if ($(this).attr('class').indexOf('nav-ul') != -1) {
+					$(this).find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+					$(this).find('.bx-chevron-right').css('transition', 'all .5s')
+					$(this).removeClass('nav-show')
+					// $(this).find('div').removeClass('nav-box')
+				}
+			})
+			//当前选中
+			$(this).addClass('a_active')
+			$(this).find('.li-a').addClass('active')
+			// 打开右侧箭头
+			$(this).find('.bx-chevron-right').css('transform', 'rotateZ(90deg)')
+			$(this).find('.bx-chevron-right').css('transition', 'all .5s')
+			$(this).addClass('nav-show')
+			// $(this).find('div').addClass('nav-box')
+		})
+		/* 二级菜单a点击事件 */
+		$(".li-a-a").click(function() {
+			$(".li-a-a").each(function() {
+				$(this).removeClass('active-li-a');
+			})
+			$(this).addClass('active-li-a');
+		})
+	})
+    // const vue = new Vue({
+	// 	el:'#app',
+	// 	data:{
+
+	// 	},
+	// 	methods:{
+	// 		liCli(){
+
+	// 		}
+	// 	}
+	// })
+</script>
+
+</body>
+</html>

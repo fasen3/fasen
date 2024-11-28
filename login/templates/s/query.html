@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+<meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'q/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'q/css/bootstrap-table.min.css' %}">
+     <link rel="stylesheet" href="{% static 'q/css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'q/css/util.css' %}">
+</head>
+<body id="c">
+ <div class="container">
+        <div id="toolbar" >
+            <ul class="searchul">
+                <li class="lileft"><span class="input-icon"><input  type="text" id="keyword" value="" placeholder="分区名称"><i class="icon-search"></i></span></li>
+                <li class="lileft"><button type="button" class="btn btn-mini btn-light" onclick="boottable.refresh();" title="搜索"><i class="icon-search"></i></button></li>
+            </ul>
+        </div>
+        <table id="table"></table>
+    </div>
+<script type="text/javascript" src="{% static 'q/js/jquery.min.js' %}"></script>
+ <script type="text/javascript" src="{% static 'q/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'q/js/bootstrap-table.js' %}"></script>
+ <script type="text/javascript" src="{% static 'q/js/layer/layer.js' %}"></script>
+    <script>
+       var boottable = {
+		loading:function(){
+			boottable.gridload();
+		},
+		gridload:function(){
+            $("#table").bootstrapTable({
+				url : 'data', 		//请求后台的URL（*）
+				toolbar : '#toolbar',
+				method : 'get', 				//请求方式（*）
+				striped : true, 				//是否显示行间隔色
+				cache : false, 					//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+				pagination : true, 				//是否显示分页（*）
+				sidePagination : "server", 		//分页方式：client客户端分页，server服务端分页（*）
+				pageNumber : 1, 				//初始化加载第一页，默认第一页
+				pageSize : 10, 	//每页的记录行数（*）
+				uniqueId : 'bvid', 			//每一行的唯一标识，一般为主键列
+				clickToSelect : true, 			//是否启用点击选中行
+				height : 700,
+                width:1500,
+				queryParams:function(params){
+					params['KEYW'] = $.trim($("#keyword").val());
+					return params;
+				},
+				columns : [
+					{ title : '分区名称', field : 'rank_tab', align : 'center', valign : 'middle'},
+					{ title : '排名', field : 'rank_num', align : 'center', valign : 'middle'},
+					{ title : '视频标题', field : 'title', align : 'center', valign : 'middle'},
+					{ title : '视频链接', field : 'href', align : 'center', valign : 'middle'},
+					{ title : '创作者', field : 'author', align : 'center', valign : 'middle'},
+					{ title : '创作者主页链接', field : 'au_href', align : 'center', valign : 'middle'},
+					{ title : 'bvid', field : 'bvid', align : 'center', valign : 'middle'},
+				],
+				responseHandler : function(res) { return { total : res.total, rows : res.records }; } ,
+				onSearch : function(text){
+					console.log("执行查询方法：查询值："+text);
+				}
+			});
+		},
+		refresh:function(){
+			$('#table').bootstrapTable('refresh', { url : 'data' });
+		}}
+       $(function () {
+		boottable.loading();
+    });
+    </script>
+
+</body>
+
+</html>

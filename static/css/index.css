@@ -1,0 +1,154 @@
+.m1{
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    top: 11%;
+    left: 30%;
+    color: white;
+    font-size: 90px;
+    font-family: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.m2{
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    top: 15%;
+    left: 30%;
+    color: white;
+    font-size: 24px;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.l1{
+    position: absolute;
+    width: 8%;
+    height: 0%;
+    top: 5%;
+    left: 5%;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.l2{
+        position: absolute;
+    width: 45%;
+    height: 0%;
+    top: 5%;
+    left: 5%;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.r1{
+    position: absolute;
+    width: 134%;
+    height: 0%;
+    top: 5%;
+    left: 5%;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.r2{
+    position: absolute;
+    width: 174%;
+    height: 0%;
+    top: 5%;
+    left: 5%;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bg{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 10;
+    border-radius: 2px;
+    border: 0px solid rgba(89, 164, 255, 1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-size:cover;
+    background:linear-gradient(90deg, rgba(153, 69, 69, 1) 0%, rgba(40, 77, 153, 1) 100%);
+}
+img{
+    position: center;
+    vertical-align: center;
+    display: flex;
+    justify-content: center;
+    opacity:20%;
+    width: 52%;
+    height: 106%;
+}
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*隐藏滚动条*/
+    overflow: hidden;
+}
+.niceButton5 {
+        display: inline-block;
+        border-radius: 20px;
+        background-color:white;
+        border: none;
+        color:black;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 400;
+        padding: 18px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 0;
+        vertical-align: middle;
+        margin-top: 600px;
+      }
+.niceButton5 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+.niceButton5 span::after {
+        content: ">";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+.niceButton5:hover span {
+        padding-right: 30px;
+      }
+.niceButton5:hover span::after {
+        opacity: 1;
+        right: 0;
+      }
+a:link{
+    /*未点击链接前颜色*/
+    color: black;
+}
+a:visited{
+    /*点击链接后颜色*/
+    color: black;
+}
+a:hover{
+    /*悬停链接时颜色*/
+    color:#FF9999;
+}
