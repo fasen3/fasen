@@ -39,7 +39,7 @@ class BlPipeline(object):
     def close_spider(self, spider):
         self.fp.close()
 
-    # 存储进数据库
+    # 存储进数据库（注意：修改为自己数据库的信息）
     def dbHandle(self):
         conn = pymysql.connect(
             host='localhost',
@@ -52,7 +52,7 @@ class BlPipeline(object):
 
 
 class HellospiderPipline(object):
-
+    # 同理修改为自己数据库的信息
     def dbHandle(self):
         conn = pymysql.connect(
             host='localhost',
