@@ -36,11 +36,11 @@ DOWNLOAD_DELAY = 1
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
 
-# 构造请求头
+# 构造请求头（注意：重新构造自己的请求头）
 DEFAULT_REQUEST_HEADERS = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'en',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    'Accept': 'XXX',
+    'Accept-Language': 'XXX',
+    'User-Agent': 'XXX'
 }
 
 # Enable or disable spider middlewares
